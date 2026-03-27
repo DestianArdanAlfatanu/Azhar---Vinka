@@ -1,0 +1,1792 @@
+/* ==================== RESET & BASE ==================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-maroon: #822824;
+    --color-cream: #E8DDBD;
+    --color-hover-red: #680400;
+    --color-dark-maroon: #3a0f0d;
+    --font-main: 'Frank Ruhl Libre', serif;
+    --font-name: 'Kapakana', cursive;
+    --font-ampersand: 'Allura', cursive;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* ==================== COVER SECTION ==================== */
+.cover {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('public/photo backdrop maroon.png') center center / cover no-repeat;
+    z-index: 1000;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    z-index: 1;
+}
+
+.cover-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    animation: coverFadeIn 1.5s ease forwards;
+}
+
+/* ---- Cover Frame ---- */
+.cover-frame-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    animation: frameFloat 4s ease-in-out infinite;
+}
+
+.cover-frame-img {
+    width: 320px;
+    height: auto;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+}
+
+.cover-frame-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+}
+
+.cover-subtitle {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-style: italic;
+    color: var(--color-maroon);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.cover-groom,
+.cover-bride {
+    font-family: var(--font-name);
+    font-size: 5.8125rem;
+    font-weight: 400;
+    color: var(--color-maroon);
+    line-height: 1.1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.cover-ampersand {
+    font-family: var(--font-ampersand);
+    font-size: 2.2rem;
+    color: var(--color-maroon);
+    margin: 0;
+    line-height: 1;
+}
+
+/* ---- Invitation Text ---- */
+.cover-invitation {
+    margin-bottom: 28px;
+    animation: textSlideUp 1.8s ease forwards;
+}
+
+.cover-kepada {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-cream);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.cover-tamu {
+    font-family: var(--font-main);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-cream);
+    letter-spacing: 1px;
+}
+
+/* ---- Button ---- */
+.cover-btn {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--color-maroon);
+    background: var(--color-cream);
+    border: 2px solid var(--color-cream);
+    padding: 12px 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    animation: buttonPulse 2.5s ease-in-out infinite, btnFadeIn 2.2s ease forwards;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.cover-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cover-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cover-btn:hover {
+    background: var(--color-hover-red);
+    color: var(--color-cream);
+    border-color: var(--color-hover-red);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(104, 4, 0, 0.4);
+}
+
+.cover-btn:active {
+    transform: scale(0.97);
+}
+
+/* ---- Cover Opened State ---- */
+.cover.cover-opened {
+    opacity: 0;
+    transform: translateY(-30px);
+    pointer-events: none;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('public/cream motif background.png') center center / cover no-repeat;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ---- Maroon Arch ---- */
+.hero-arch {
+    position: relative;
+    width: 80%;
+    background: url('public/photo backdrop maroon.png') center center / cover no-repeat;
+    border-radius: 200px 200px 0 0;
+    padding: 35px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Hero Text ---- */
+.hero-text {
+    text-align: center;
+    margin-bottom: 15px;
+    animation: heroFadeIn 1.2s ease forwards;
+}
+
+.hero-label {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: #F2D9A0;
+    margin-bottom: 5px;
+    letter-spacing: 1.5px;
+}
+
+.hero-names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.hero-groom,
+.hero-bride {
+    font-family: var(--font-name);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    line-height: 1.1;
+}
+
+.hero-amp {
+    font-family: var(--font-ampersand);
+    font-size: 2rem;
+    color: #F2D9A0;
+    line-height: 1;
+}
+
+.hero-date {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    margin-top: 8px;
+    letter-spacing: 3px;
+}
+
+.hero-bunga-atas-decor {
+    position: absolute;
+    top: -5px;
+    right: -20px;
+    width: 130px;
+    height: auto;
+    z-index: 10;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    animation: flowerBounce 3s ease-in-out infinite;
+}
+/* ---- Hero Photo Frame ---- */
+.hero-frame-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: heroFrameSlideUp 1.5s ease forwards;
+}
+
+.hero-frame-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-frame-img {
+    width: 220px;
+    height: auto;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
+}
+
+.hero-photo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72%;
+    height: 82%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* ---- Hero Animations ---- */
+@keyframes heroFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroFrameSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flowerBounce {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg) translateY(-3px);
+    }
+}
+
+/* ==================== PENGANTIN SECTION ==================== */
+.pengantin {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+/* Background with 20% opacity */
+.pengantin::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('public/cream motif background.png') center center / cover no-repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* ---- Section Header ---- */
+.pengantin-header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pengantin-title {
+    font-family: var(--font-name);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--color-maroon);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.pengantin-doa {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-maroon);
+    line-height: 1.7;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* ---- Cards Layout ---- */
+.pengantin-cards {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ---- Ampersand between cards ---- */
+.pengantin-ampersand {
+    font-family: var(--font-ampersand);
+    font-size: 3.5rem;
+    color: var(--color-maroon);
+    padding: 0 15px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+/* ---- Individual Card ---- */
+.pengantin-card {
+    flex: 1;
+    max-width: 380px;
+}
+
+.pengantin-card-inner {
+    position: relative;
+    background: url('public/photo backdrop maroon.png') center center / cover no-repeat;
+    border-radius: 12px;
+    padding: 20px 20px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+/* ---- Gold Decal ---- */
+.pengantin-gold-decal {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 10px;
+    opacity: 0.85;
+}
+
+/* ---- Photo with Gold Border ---- */
+.pengantin-photo-wrapper {
+    width: 70%;
+    max-width: 220px;
+    aspect-ratio: 3 / 4;
+    border-radius: 120px 120px 8px 8px;
+    border: 3px solid #E8CD98;
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.pengantin-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---- Name & Parents Info ---- */
+.pengantin-info {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.pengantin-nickname {
+    font-family: var(--font-name);
+    font-size: 2rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.pengantin-fullname {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #F2D9A0;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.pengantin-parents {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #F2D9A0;
+    line-height: 1.5;
+}
+
+/* ---- Instagram Link ---- */
+.pengantin-ig-link {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pengantin-ig-link:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
+}
+
+.pengantin-ig-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* ==================== INFORMASI ACARA SECTION ==================== */
+.acara {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    background: url('public/photo backdrop maroon.png') center center / cover no-repeat;
+    overflow: hidden;
+}
+
+/* ---- Section Header ---- */
+.acara-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.acara-title {
+    font-family: var(--font-name);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.acara-doa {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    line-height: 1.7;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* ---- Event Columns ---- */
+.acara-columns {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 30px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.acara-column {
+    flex: 1;
+    max-width: 440px;
+}
+
+/* ---- Event Card ---- */
+.acara-card {
+    position: relative;
+    background: url('public/cream motif background.png') center center / cover no-repeat;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 480px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Frame maroon overlay */
+.acara-frame-decor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ---- Card Content (inside frame) ---- */
+.acara-card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 25px;
+}
+
+.acara-event-title {
+    font-family: var(--font-name);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+/* ---- Event Details ---- */
+.acara-event-details {
+    margin-bottom: 15px;
+}
+
+.acara-hari {
+    font-family: var(--font-main);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #F2D9A0;
+    letter-spacing: 3px;
+    margin-bottom: 3px;
+}
+
+.acara-tanggal {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #F2D9A0;
+    letter-spacing: 1.5px;
+    margin-bottom: 3px;
+}
+
+.acara-jam {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    letter-spacing: 1px;
+}
+
+/* ---- Location ---- */
+.acara-lokasi {
+    margin-bottom: 14px;
+}
+
+.acara-tempat {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #F2D9A0;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.acara-alamat {
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: #F2D9A0;
+    line-height: 1.5;
+}
+
+/* ---- Google Maps Button ---- */
+.acara-maps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-cream);
+    color: var(--color-maroon);
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.acara-maps-btn:hover {
+    background: var(--color-hover-red);
+    color: var(--color-cream);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(104, 4, 0, 0.4);
+}
+
+.acara-maps-icon {
+    width: 14px;
+    height: auto;
+}
+
+/* ==================== GALLERY SECTION ==================== */
+.gallery {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+/* Background with 20% opacity */
+.gallery::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('public/cream motif background.png') center center / cover no-repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* ---- Gallery Frame (maroon card) ---- */
+.gallery-frame {
+    position: relative;
+    z-index: 1;
+    background: url('public/photo backdrop maroon.png') center center / cover no-repeat;
+    border-radius: 12px;
+    padding: 50px 35px 40px;
+    max-width: 950px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* ---- Corner Decorations ---- */
+.gallery-decal-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: auto;
+    opacity: 0.85;
+    z-index: 3;
+}
+
+.gallery-decal-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: auto;
+    opacity: 0.85;
+    z-index: 3;
+}
+
+.gallery-decal-bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: auto;
+    opacity: 0.85;
+    transform: rotate(180deg);
+    z-index: 3;
+}
+
+.gallery-decal-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: auto;
+    opacity: 0.85;
+    transform: rotate(180deg);
+    z-index: 3;
+}
+
+.gallery-decal-horizontal {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: auto;
+    opacity: 0.85;
+    z-index: 3;
+}
+
+/* ---- Gallery Title ---- */
+.gallery-title {
+    font-family: var(--font-name);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #F2D9A0;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 2;
+}
+
+/* ---- Photo Grid ---- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border: 2px solid #F2D9A0;
+    border-radius: 4px;
+    line-height: 0;
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05);
+}
+
+/* Big left photo - spans 2 rows */
+.gallery-big-left {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* Small photos - auto placement in columns 2-3 */
+.gallery-small:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+.gallery-small:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+}
+.gallery-small:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+}
+.gallery-small:nth-child(5) {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+/* Big right photo - spans 2 rows */
+.gallery-big-right {
+    grid-column: 4;
+    grid-row: 1 / 3;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes coverFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes frameFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes textSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(232, 221, 189, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(232, 221, 189, 0);
+    }
+}
+
+@keyframes btnFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* Large desktops / monitors */
+@media (min-width: 1440px) {
+    .cover-frame-img {
+        width: 400px;
+    }
+
+    .cover-groom,
+    .cover-bride {
+        font-size: 6.5rem;
+    }
+
+    .cover-ampersand {
+        font-size: 2.8rem;
+    }
+
+    .cover-subtitle {
+        font-size: 1.7rem;
+    }
+
+    .cover-kepada {
+        font-size: 1.15rem;
+    }
+
+    .cover-tamu {
+        font-size: 1.5rem;
+    }
+
+    .cover-btn {
+        font-size: 1.1rem;
+        padding: 14px 50px;
+    }
+
+    /* Hero - Large desktops */
+    .hero-inner {
+        max-width: 520px;
+    }
+
+    .hero-arch {
+        padding: 50px 20px 30px;
+    }
+
+    .hero-groom,
+    .hero-bride {
+        font-size: 3.5rem;
+    }
+
+    .hero-amp {
+        font-size: 2.5rem;
+    }
+
+    .hero-label {
+        font-size: 1.2rem;
+    }
+
+    .hero-date {
+        font-size: 1.2rem;
+    }
+
+    .hero-frame-img {
+        width: 280px;
+    }
+
+    .hero-bunga-atas-decor {
+        width: 170px;
+        top: -15px;
+        right: -30px;
+    }
+
+    /* Pengantin - Large desktops */
+    .pengantin-title {
+        font-size: 3.5rem;
+    }
+
+    .pengantin-doa {
+        font-size: 1.05rem;
+    }
+
+    .pengantin-nickname {
+        font-size: 2.3rem;
+    }
+
+    .pengantin-fullname {
+        font-size: 1.05rem;
+    }
+
+    .pengantin-parents {
+        font-size: 0.9rem;
+    }
+
+    /* Acara - Large desktops */
+    .acara-columns {
+        max-width: 1000px;
+    }
+
+    .acara-card {
+        min-height: 520px;
+    }
+
+    .acara-title {
+        font-size: 3.5rem;
+    }
+
+    .acara-doa {
+        font-size: 1.05rem;
+    }
+
+    .acara-event-title {
+        font-size: 2rem;
+    }
+
+    .acara-hari {
+        font-size: 1.5rem;
+    }
+
+    .acara-tanggal {
+        font-size: 1.2rem;
+    }
+
+    /* Gallery - Large desktops */
+    .gallery-frame {
+        max-width: 1100px;
+        padding: 55px 50px 45px;
+    }
+
+    .gallery-title {
+        font-size: 3rem;
+    }
+
+    .gallery-decal-top-left,
+    .gallery-decal-top-right {
+        width: 100px;
+    }
+
+    .gallery-decal-bottom-left,
+    .gallery-decal-bottom-right {
+        width: 100px;
+    }
+
+    .gallery-decal-horizontal {
+        width: 150px;
+    }
+}
+
+/* Laptops */
+@media (max-width: 1024px) {
+    .cover-frame-img {
+        width: 300px;
+    }
+
+    .cover-groom,
+    .cover-bride {
+        font-size: 5rem;
+    }
+
+    .cover-ampersand {
+        font-size: 2rem;
+    }
+
+    /* Hero - Laptops */
+    .hero-inner {
+        max-width: 400px;
+    }
+
+    .hero-groom,
+    .hero-bride {
+        font-size: 2.5rem;
+    }
+
+    .hero-amp {
+        font-size: 1.8rem;
+    }
+
+    .hero-frame-img {
+        width: 210px;
+    }
+
+    /* Pengantin - Laptops */
+    .pengantin-cards {
+        max-width: 780px;
+    }
+
+    /* Acara - Laptops */
+    .acara-columns {
+        max-width: 850px;
+        gap: 25px;
+    }
+
+    /* Gallery - Laptops */
+    .gallery-frame {
+        max-width: 850px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .cover-frame-img {
+        width: 260px;
+    }
+
+    .cover-groom,
+    .cover-bride {
+        font-size: 4rem;
+    }
+
+    .cover-ampersand {
+        font-size: 1.8rem;
+    }
+
+    .cover-subtitle {
+        font-size: 1rem;
+    }
+
+    .cover-kepada {
+        font-size: 0.9rem;
+    }
+
+    .cover-tamu {
+        font-size: 1.15rem;
+    }
+
+    .cover-btn {
+        padding: 10px 32px;
+        font-size: 0.9rem;
+    }
+
+    /* Hero - Tablets */
+    .hero-inner {
+        max-width: 360px;
+    }
+
+    .hero-arch {
+        padding: 35px 15px 25px;
+        border-radius: 180px 180px 0 0;
+    }
+
+    .hero-groom,
+    .hero-bride {
+        font-size: 2.2rem;
+    }
+
+    .hero-amp {
+        font-size: 1.6rem;
+    }
+
+    .hero-label {
+        font-size: 0.9rem;
+    }
+
+    .hero-date {
+        font-size: 0.85rem;
+    }
+
+    .hero-frame-img {
+        width: 190px;
+    }
+
+    .hero-bunga-atas-decor {
+        width: 100px;
+        top: -5px;
+        right: 5px;
+    }
+
+    /* Pengantin - Tablets */
+    .pengantin {
+        padding: 40px 15px;
+    }
+
+    .pengantin-cards {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .pengantin-ampersand {
+        padding: 10px 0;
+        font-size: 3rem;
+    }
+
+    .pengantin-card {
+        max-width: 360px;
+        width: 100%;
+    }
+
+    .pengantin-title {
+        font-size: 2.4rem;
+    }
+
+    .pengantin-doa {
+        font-size: 0.85rem;
+    }
+
+    .pengantin-nickname {
+        font-size: 1.8rem;
+    }
+
+    /* Acara - Tablets */
+    .acara {
+        padding: 40px 15px;
+    }
+
+    .acara-columns {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .acara-column {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .acara-card {
+        min-height: 450px;
+    }
+
+    .acara-title {
+        font-size: 2.4rem;
+    }
+
+    .acara-doa {
+        font-size: 0.85rem;
+    }
+
+    /* Gallery - Tablets */
+    .gallery {
+        padding: 40px 15px;
+    }
+
+    .gallery-frame {
+        padding: 40px 20px 35px;
+    }
+
+    .gallery-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .gallery-decal-top-left,
+    .gallery-decal-top-right {
+        width: 65px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 8px;
+    }
+
+    .gallery-big-left {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .gallery-small:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .gallery-small:nth-child(3) {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .gallery-small:nth-child(4) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .gallery-small:nth-child(5) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .gallery-big-right {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .gallery-decal-top-left,
+    .gallery-decal-top-right {
+        width: 60px;
+    }
+
+    .gallery-decal-bottom-left,
+    .gallery-decal-bottom-right {
+        width: 60px;
+    }
+
+    .gallery-decal-horizontal {
+        width: 90px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .cover-frame-img {
+        width: 220px;
+    }
+
+    .cover-groom,
+    .cover-bride {
+        font-size: 3rem;
+    }
+
+    .cover-ampersand {
+        font-size: 1.5rem;
+    }
+
+    .cover-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .cover-invitation {
+        margin-bottom: 20px;
+    }
+
+    .cover-kepada {
+        font-size: 0.82rem;
+    }
+
+    .cover-tamu {
+        font-size: 1rem;
+    }
+
+    .cover-btn {
+        padding: 10px 28px;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    /* Hero - Small phones */
+    .hero {
+        padding: 30px 10px;
+    }
+
+    .hero-inner {
+        max-width: 300px;
+    }
+
+    .hero-arch {
+        padding: 30px 12px 20px;
+        border-radius: 150px 150px 0 0;
+    }
+
+    .hero-groom,
+    .hero-bride {
+        font-size: 1.8rem;
+    }
+
+    .hero-amp {
+        font-size: 1.4rem;
+    }
+
+    .hero-label {
+        font-size: 0.85rem;
+    }
+
+    .hero-date {
+        font-size: 0.8rem;
+    }
+
+    .hero-frame-img {
+        width: 170px;
+    }
+
+    .hero-bunga-atas-decor {
+        width: 95px;
+        top: 0px;
+        right: -20px;
+    }
+
+    /* Pengantin - Small phones */
+    .pengantin {
+        padding: 30px 10px;
+    }
+
+    .pengantin-header {
+        margin-bottom: 25px;
+    }
+
+    .pengantin-title {
+        font-size: 2rem;
+    }
+
+    .pengantin-doa {
+        font-size: 0.78rem;
+    }
+
+    .pengantin-card {
+        max-width: 300px;
+    }
+
+    .pengantin-card-inner {
+        padding: 15px 15px 20px;
+    }
+
+    .pengantin-nickname {
+        font-size: 1.5rem;
+    }
+
+    .pengantin-fullname {
+        font-size: 0.85rem;
+    }
+
+    .pengantin-parents {
+        font-size: 0.72rem;
+    }
+
+    .pengantin-ampersand {
+        font-size: 2.5rem;
+    }
+
+    .pengantin-ig-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Acara - Small phones */
+    .acara {
+        padding: 30px 10px;
+    }
+
+    .acara-header {
+        margin-bottom: 25px;
+    }
+
+    .acara-title {
+        font-size: 2rem;
+    }
+
+    .acara-doa {
+        font-size: 0.78rem;
+    }
+
+    .acara-columns {
+        gap: 20px;
+    }
+
+    .acara-column {
+        max-width: 340px;
+    }
+
+    .acara-card {
+        min-height: 380px;
+        padding: 18px;
+    }
+
+    .acara-card-content {
+        padding: 30px 12px 20px;
+    }
+
+    .acara-event-title {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    .acara-hari {
+        font-size: 1.1rem;
+    }
+
+    .acara-tanggal {
+        font-size: 0.85rem;
+    }
+
+    .acara-jam {
+        font-size: 0.7rem;
+    }
+
+    .acara-tempat {
+        font-size: 0.75rem;
+    }
+
+    .acara-alamat {
+        font-size: 0.65rem;
+    }
+
+    .acara-maps-btn {
+        font-size: 0.72rem;
+        padding: 6px 14px;
+    }
+
+    /* Gallery - Small phones */
+    .gallery {
+        padding: 30px 10px;
+    }
+
+    .gallery-frame {
+        padding: 20px 15px 18px;
+    }
+
+    .gallery-title {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+
+    .gallery-decal-top-left,
+    .gallery-decal-top-right {
+        width: 50px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 6px;
+    }
+
+    .gallery-big-left {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .gallery-small:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .gallery-small:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .gallery-small:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .gallery-small:nth-child(5) {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .gallery-big-right {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .gallery-item {
+        border-width: 2px;
+    }
+
+    .gallery-decal-bottom-left,
+    .gallery-decal-bottom-right {
+        width: 50px;
+    }
+
+    .gallery-decal-horizontal {
+        width: 70px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    .cover-frame-img {
+        width: 190px;
+    }
+
+    .cover-groom,
+    .cover-bride {
+        font-size: 2.5rem;
+    }
+
+    .cover-ampersand {
+        font-size: 1.3rem;
+    }
+
+    .cover-subtitle {
+        font-size: 0.78rem;
+    }
+
+    .cover-btn {
+        padding: 8px 24px;
+        font-size: 0.8rem;
+    }
+
+    /* Hero - Very small phones */
+    .hero-inner {
+        max-width: 260px;
+    }
+
+    .hero-arch {
+        padding: 28px 10px 18px;
+        border-radius: 130px 130px 0 0;
+    }
+
+    .hero-groom,
+    .hero-bride {
+        font-size: 1.5rem;
+    }
+
+    .hero-amp {
+        font-size: 1.2rem;
+    }
+
+    .hero-label {
+        font-size: 0.75rem;
+    }
+
+    .hero-date {
+        font-size: 0.7rem;
+    }
+
+    .hero-frame-img {
+        width: 150px;
+    }
+
+    .hero-bunga-atas-decor {
+        width: 80px;
+        top: -5px;
+        right: -10px;
+    }
+
+    /* Pengantin - Very small phones */
+    .pengantin-title {
+        font-size: 1.7rem;
+    }
+
+    .pengantin-doa {
+        font-size: 0.72rem;
+    }
+
+    .pengantin-card {
+        max-width: 270px;
+    }
+
+    .pengantin-card-inner {
+        padding: 12px 12px 18px;
+    }
+
+    .pengantin-nickname {
+        font-size: 1.3rem;
+    }
+
+    .pengantin-fullname {
+        font-size: 0.78rem;
+    }
+
+    .pengantin-parents {
+        font-size: 0.68rem;
+    }
+
+    .pengantin-ampersand {
+        font-size: 2rem;
+    }
+
+    .pengantin-ig-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Acara - Very small phones */
+    .acara-title {
+        font-size: 1.7rem;
+    }
+
+    .acara-doa {
+        font-size: 0.72rem;
+    }
+
+    .acara-column {
+        max-width: 300px;
+    }
+
+    .acara-card {
+        min-height: 340px;
+        padding: 15px;
+    }
+
+    .acara-card-content {
+        padding: 25px 10px 15px;
+    }
+
+    .acara-event-title {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+    }
+
+    .acara-hari {
+        font-size: 0.95rem;
+    }
+
+    .acara-tanggal {
+        font-size: 0.75rem;
+    }
+
+    .acara-jam {
+        font-size: 0.62rem;
+    }
+
+    .acara-tempat {
+        font-size: 0.68rem;
+    }
+
+    .acara-alamat {
+        font-size: 0.58rem;
+    }
+
+    .acara-maps-btn {
+        font-size: 0.65rem;
+        padding: 5px 12px;
+    }
+
+    .acara-maps-icon {
+        width: 12px;
+    }
+
+    /* Gallery - Very small phones */
+    .gallery-frame {
+        padding: 15px 12px 15px;
+    }
+
+    .gallery-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .gallery-decal-top-left,
+    .gallery-decal-top-right {
+        width: 40px;
+    }
+
+    .gallery-grid {
+        gap: 5px;
+    }
+
+    .gallery-decal-bottom-left,
+    .gallery-decal-bottom-right {
+        width: 40px;
+    }
+
+    .gallery-decal-horizontal {
+        width: 55px;
+    }
+}
+
+/* Fix for very tall/narrow screens (phones in portrait) */
+@media (max-height: 600px) {
+    .cover-frame-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .cover-frame-img {
+        width: 180px;
+    }
+
+    .cover-groom,
+    .cover-bride {
+        font-size: 2.2rem;
+    }
+
+    .cover-ampersand {
+        font-size: 1.2rem;
+    }
+
+    .cover-invitation {
+        margin-bottom: 15px;
+    }
+
+    /* Hero - Short screens */
+    .hero {
+        padding: 30px 15px;
+    }
+
+    .hero-text {
+        margin-bottom: 15px;
+    }
+
+    .hero-arch {
+        padding: 35px 18px 25px;
+    }
+
+    .hero-frame-img {
+        width: 180px;
+    }
+
+    .hero-bunga-atas-decor {
+        width: 70px;
+        top: 0px;
+        right: 0px;
+    }
+}
