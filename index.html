@@ -89,7 +89,7 @@
 
                     <!-- Photo with gold rounded border -->
                     <div class="pengantin-photo-wrapper">
-                        <img src="public/calon pengantin.png" alt="Foto Vinka" class="pengantin-photo">
+                        <img src="public/wanita.jpeg" alt="Foto Vinka" class="pengantin-photo">
                     </div>
 
                     <!-- Name & Parents info -->
@@ -119,7 +119,7 @@
 
                     <!-- Photo with gold rounded border -->
                     <div class="pengantin-photo-wrapper">
-                        <img src="public/calon pengantin.png" alt="Foto Azhar" class="pengantin-photo">
+                        <img src="public/pria.jpeg" alt="Foto Azhar" class="pengantin-photo">
                     </div>
 
                     <!-- Name & Parents info -->
@@ -162,11 +162,11 @@
                         <div class="acara-event-details">
                             <p class="acara-hari">SABTU</p>
                             <p class="acara-tanggal">6 JUNI 2026</p>
-                            <p class="acara-jam">08.00 - 10.00 WIB</p>
+                            <p class="acara-jam">09.00 - 10.00 WIB</p>
                         </div>
                         <div class="acara-lokasi">
-                            <p class="acara-tempat">MASJID AL-IKHLAS</p>
-                            <p class="acara-alamat">Jalan Raya Nama Jalan No. 1,<br>Nama Kecamatan, Nama Kota,<br>Jawa Timur</p>
+                            <p class="acara-tempat">Rumah Mempelai Wanita</p>
+                            <p class="acara-alamat">RT02 RW04, Sumampir<br>Kec. Purwokerto Utara, Kabupaten Banyumas,<br>Jawa Tengah - 53125</p>
                         </div>
                         <a href="https://maps.app.goo.gl/pXgJXgvZQPh8C22u7" target="_blank" rel="noopener noreferrer" class="acara-maps-btn">
                             <img src="public/icon maps merah.png" alt="Maps" class="acara-maps-icon">
@@ -187,11 +187,11 @@
                         <div class="acara-event-details">
                             <p class="acara-hari">SABTU</p>
                             <p class="acara-tanggal">6 JUNI 2026</p>
-                            <p class="acara-jam">11.00 - 14.00 WIB</p>
+                            <p class="acara-jam">11.00 WIB - selesai</p>
                         </div>
                         <div class="acara-lokasi">
-                            <p class="acara-tempat">GEDUNG SERBAGUNA</p>
-                            <p class="acara-alamat">Jalan Raya Nama Jalan No. 1,<br>Nama Kecamatan, Nama Kota,<br>Jawa Timur</p>
+                            <p class="acara-tempat">Rumah Mempelai Wanita</p>
+                            <p class="acara-alamat">RT02 RW04, Sumampir<br>Kec. Purwokerto Utara, Kabupaten Banyumas,<br>Jawa Tengah - 53125</p>
                         </div>
                         <a href="https://maps.app.goo.gl/pXgJXgvZQPh8C22u7" target="_blank" rel="noopener noreferrer" class="acara-maps-btn">
                             <img src="public/icon maps merah.png" alt="Maps" class="acara-maps-icon">
@@ -216,22 +216,22 @@
             <!-- Photo grid: 1 big left, 4 small center (2x2), 1 big right -->
             <div class="gallery-grid">
                 <div class="gallery-item gallery-big-left">
-                    <img src="public/calon pengantin.png" alt="Foto 1" class="gallery-photo">
+                    <img src="public/genju2.jpeg" alt="Foto 1" class="gallery-photo">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="public/calon pengantin.png" alt="Foto 2" class="gallery-photo">
+                    <img src="public/genju1.jpeg" alt="Foto 2" class="gallery-photo">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="public/calon pengantin.png" alt="Foto 3" class="gallery-photo">
+                    <img src="public/genju6.jpeg" alt="Foto 3" class="gallery-photo">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="public/calon pengantin.png" alt="Foto 4" class="gallery-photo">
+                    <img src="public/genju4.jpeg" alt="Foto 4" class="gallery-photo">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="public/calon pengantin.png" alt="Foto 5" class="gallery-photo">
+                    <img src="public/genju5.jpeg" alt="Foto 5" class="gallery-photo">
                 </div>
                 <div class="gallery-item gallery-big-right">
-                    <img src="public/calon pengantin.png" alt="Foto 6" class="gallery-photo">
+                    <img src="public/genju3.jpeg" alt="Foto 6" class="gallery-photo">
                 </div>
             </div>
 
@@ -242,12 +242,246 @@
         </div>
     </section>
 
+    <!-- ==================== RSVP SECTION ==================== -->
+    <section class="rsvp" id="rsvp">
+        <div class="rsvp-header">
+            <h2 class="rsvp-title">Rsvp</h2>
+            <p class="rsvp-subtitle">Mohon konfirmasi kehadiran</p>
+        </div>
+
+        <div class="rsvp-form-card">
+            <form id="rsvpForm" onsubmit="submitRSVP(event)">
+                <div class="rsvp-field">
+                    <label for="rsvpNama" class="rsvp-label">Nama</label>
+                    <input type="text" id="rsvpNama" class="rsvp-input" placeholder="&nbsp; Masukkan nama lengkap" required>
+                </div>
+
+                <div class="rsvp-field">
+                    <label for="rsvpPhone" class="rsvp-label">Alamat</label>
+                    <input type="text" id="rsvpPhone" class="rsvp-input" placeholder="&nbsp; Masukkan alamat" required>
+                </div>
+
+                <div class="rsvp-field">
+                    <label class="rsvp-label">Kehadiran</label>
+                    <div class="rsvp-radio-group">
+                        <label class="rsvp-radio-label">
+                            <input type="radio" name="kehadiran" value="hadir" class="rsvp-radio" onchange="toggleJumlahTamu()" checked>
+                            <span class="rsvp-radio-custom"></span>
+                            <span>Akan Hadir</span>
+                        </label>
+                        <label class="rsvp-radio-label">
+                            <input type="radio" name="kehadiran" value="tidak" class="rsvp-radio" onchange="toggleJumlahTamu()">
+                            <span class="rsvp-radio-custom"></span>
+                            <span>Tidak Dapat Hadir</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="rsvp-field" id="jumlahTamuField">
+                    <label for="rsvpJumlah" class="rsvp-label">Jumlah Tamu</label>
+                    <input type="number" id="rsvpJumlah" class="rsvp-input rsvp-input-number" min="1" max="10" value="1">
+                </div>
+
+                <button type="submit" class="rsvp-confirm-btn">Confirm</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== GIFT SECTION ==================== -->
+    <section class="gift" id="gift">
+        <div class="gift-header">
+            <h2 class="gift-title">Wedding Gift</h2>
+            <p class="gift-subtitle">
+                Tanpa mengurangi rasa hormat, bagi<br>
+                Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
+            </p>
+        </div>
+
+        <div class="gift-card">
+            <div class="gift-grid">
+                <!-- Rekening -->
+                <div class="gift-grid-item">
+                    <div class="gift-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F2D9A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                    </div>
+                    <p class="gift-bank-name">Bank BCA</p>
+                    <p class="gift-account-number">3580955516</p>
+                    <p class="gift-account-holder">a.n <strong>Khumaidi Azhar</strong></p>
+                    <button class="gift-copy-btn" onclick="copyToClipboard('3580955516', this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Copy No. Rekening
+                    </button>
+                </div>
+
+                <!-- Divider Line -->
+                <div class="gift-divider"></div>
+
+                <!-- Alamat -->
+                <div class="gift-grid-item">
+                    <div class="gift-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F2D9A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"/>
+                            <polyline points="12 3 20 9 12 15 4 9 12 3"/>
+                            <line x1="12" y1="15" x2="12" y2="20"/>
+                            <path d="M9 1h6v3H9z" fill="none"/>
+                            <rect x="8" y="1" width="8" height="3" rx="1" fill="none"/>
+                        </svg>
+                    </div>
+                    <p class="gift-address-label">Kirim Kado:</p>
+                    <p class="gift-address-name"><strong>Vinka Nur Angelina</strong></p>
+                    <p class="gift-address-text">RT02 RW04, Sumampir<br>Kec. Purwokerto Utara, Kabupaten Banyumas,<br>Jawa Tengah - 53125</p>
+                    <button class="gift-copy-btn" onclick="copyToClipboard('RT02 RW04, Sumampir, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah - 53125', this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Copy Alamat
+                    </button>
+                </div>
+            </div>
+            <p class="gift-thankyou">Terima Kasih</p>
+        </div>
+    </section>
+
+    <!-- ==================== WISHES SECTION ==================== -->
+    <section class="wishes" id="wishes">
+        <div class="wishes-overlay"></div>
+        <div class="wishes-content">
+            <div class="wishes-header">
+                <h2 class="wishes-title">Wishes</h2>
+                <p class="wishes-subtitle">Ucapan & Doa</p>
+            </div>
+
+            <div class="wishes-form-area">
+                <form id="wishesForm" onsubmit="submitWish(event)">
+                    <input type="text" id="wishNama" class="wishes-input" placeholder="Nama" required>
+                    <textarea id="wishComment" class="wishes-textarea" placeholder="Comment" rows="4" required></textarea>
+                    <div class="wishes-btn-wrapper">
+                        <button type="submit" class="wishes-send-btn">Send</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="wishes-list" id="wishesList">
+                <div class="wishes-item">
+                    <p class="wishes-item-name">Miftahudin</p>
+                    <p class="wishes-item-message">Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin 🤲</p>
+                </div>
+                <div class="wishes-item">
+                    <p class="wishes-item-name">Rifqi Wijaya</p>
+                    <p class="wishes-item-message">Semoga Langgeng Till Jannah</p>
+                </div>
+                <div class="wishes-item">
+                    <p class="wishes-item-name">Ika Cahyanti</p>
+                    <p class="wishes-item-message">Barakallahu lakuma wa baraka 'alaikuma wa jama'a bainakuma fi khair. Selamat menempuh hidup baru! 💐</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PENUTUP SECTION ==================== -->
+    <section class="penutup" id="penutup">
+        <div class="penutup-inner">
+            <!-- Left side: Ayat Suci -->
+            <div class="penutup-left">
+                <h3 class="penutup-ayat-title">Ayat Suci</h3>
+                <p class="penutup-ayat-text">
+                    “Di antara tanda-tanda (kebesaran)-Nya ialah bahwa 
+                    Dia menciptakan pasangan-pasangan untukmu dari (jenis) 
+                    dirimu sendiri agar kamu merasa tenteram kepadanya. 
+                    Dia menjadikan di antaramu rasa cinta dan kasih sayang. 
+                    Sesungguhnya pada yang demikian itu benar-benar terdapat 
+                    tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”
+                </p>
+                <p class="penutup-ayat-name">Qur'an Surat Ar-Rum 21</p>
+            </div>
+
+            <!-- Right side: Photo frame -->
+            <div class="penutup-right">
+                <div class="penutup-frame">
+                    <div class="penutup-frame-overlay"></div>
+                    <!-- Gold decals -->
+                    <img src="public/gold decal 1.png" alt="Gold Decal" class="penutup-decal-left">
+                    <img src="public/gold decal 2.png" alt="Gold Decal" class="penutup-decal-right">
+
+                    <div class="penutup-frame-content">
+                        <!-- Photo with arch border -->
+                        <div class="penutup-photo-wrapper">
+                            <img src="public/fotoclose.jpeg" alt="Foto Calon Pengantin" class="penutup-photo">
+                        </div>
+
+                        <p class="penutup-message">
+                            Suatu kebahagiaan & kehormatan bagi kami,<br>
+                            apabila Bapak/Ibu/Saudara/i, berkenan hadir<br>
+                            dan memberikan doa restu kepada kami
+                        </p>
+                        <p class="penutup-bahagia">Kami Yang Berbahagia,</p>
+                        <div class="penutup-names">
+                            <span class="penutup-name">Azhar</span>
+                            <span class="penutup-name-amp">&</span>
+                            <span class="penutup-name">Vinka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER SECTION ==================== -->
+    <footer class="footer" id="footer">
+        <p class="footer-text-top">Made With Love By</p>
+        <div class="footer-logo-wrapper">
+            <img src="public/logo.png" alt="DiikatJanji Logo" class="footer-logo">
+        </div>
+        <p class="footer-text-bottom">all right reserved by DiikatJanji</p>
+    </footer>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" src="public/backsound.m4a" loop preload="auto"></audio>
+
+    <!-- Floating Music Toggle Button (hidden by default) -->
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()" aria-label="Toggle Music">
+        <svg class="music-icon music-icon-play" id="iconPlay" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="music-icon music-icon-pause" id="iconPause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </button>
+
     <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const iconPlay = document.getElementById('iconPlay');
+        const iconPause = document.getElementById('iconPause');
+        let isMusicPlaying = false;
+
         function openInvitation() {
             const cover = document.getElementById('cover');
             
             // Start fade-out animation
             cover.classList.add('cover-opened');
+
+            // Play music
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                iconPlay.style.display = 'none';
+                iconPause.style.display = 'block';
+            }).catch(() => {
+                // Autoplay blocked, show play icon
+                isMusicPlaying = false;
+                iconPlay.style.display = 'block';
+                iconPause.style.display = 'none';
+            });
+
+            // Show music toggle button
+            musicToggle.classList.add('music-toggle-visible');
 
             // After animation completes, remove cover entirely and enable scrolling
             setTimeout(() => {
@@ -255,6 +489,143 @@
                 document.body.classList.remove('no-scroll');
                 window.scrollTo(0, 0);
             }, 800);
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                isMusicPlaying = false;
+                iconPlay.style.display = 'block';
+                iconPause.style.display = 'none';
+            } else {
+                bgMusic.play();
+                isMusicPlaying = true;
+                iconPlay.style.display = 'none';
+                iconPause.style.display = 'block';
+            }
+        }
+
+        // RSVP Functions
+        function toggleJumlahTamu() {
+            const kehadiran = document.querySelector('input[name="kehadiran"]:checked').value;
+            const jumlahField = document.getElementById('jumlahTamuField');
+            if (kehadiran === 'hadir') {
+                jumlahField.style.display = 'block';
+                jumlahField.style.opacity = '1';
+                jumlahField.style.maxHeight = '200px';
+            } else {
+                jumlahField.style.opacity = '0';
+                jumlahField.style.maxHeight = '0';
+                setTimeout(() => {
+                    jumlahField.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function submitRSVP(event) {
+            event.preventDefault();
+            const nama = document.getElementById('rsvpNama').value;
+            const phone = document.getElementById('rsvpPhone').value;
+            const kehadiran = document.querySelector('input[name="kehadiran"]:checked').value;
+            const jumlah = kehadiran === 'hadir' ? document.getElementById('rsvpJumlah').value : 0;
+
+            const btn = document.querySelector('.rsvp-confirm-btn');
+            btn.textContent = '✓ Terkirim!';
+            btn.style.background = '#822824';
+            btn.style.color = '#F2D9A0';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = 'Confirm';
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.disabled = false;
+            }, 3000);
+
+            console.log('RSVP:', { nama, phone, kehadiran, jumlah });
+        }
+
+        // Gift Copy Function
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Tersalin!
+                `;
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.innerHTML = originalText;
+                    btnElement.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Tersalin!
+                `;
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.innerHTML = originalText;
+                    btnElement.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Wishes Functions
+        function submitWish(event) {
+            event.preventDefault();
+            const nama = document.getElementById('wishNama').value.trim();
+            const comment = document.getElementById('wishComment').value.trim();
+
+            if (!nama || !comment) return;
+
+            // Create new wish item
+            const wishesList = document.getElementById('wishesList');
+            const wishItem = document.createElement('div');
+            wishItem.className = 'wishes-item wishes-item-new';
+            wishItem.innerHTML = `
+                <p class="wishes-item-name">${nama}</p>
+                <p class="wishes-item-message">${comment}</p>
+            `;
+
+            // Insert at the top of the list
+            wishesList.insertBefore(wishItem, wishesList.firstChild);
+
+            // Animate entry
+            setTimeout(() => {
+                wishItem.classList.add('wishes-item-visible');
+            }, 10);
+
+            // Reset form
+            document.getElementById('wishNama').value = '';
+            document.getElementById('wishComment').value = '';
+
+            // Button feedback
+            const btn = document.querySelector('.wishes-send-btn');
+            btn.textContent = '✓ Terkirim!';
+            btn.style.background = '#680400';
+            btn.style.color = '#E8DDBD';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = 'Send';
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.disabled = false;
+            }, 2000);
         }
     </script>
 
