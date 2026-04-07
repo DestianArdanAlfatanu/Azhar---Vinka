@@ -1661,6 +1661,533 @@ body.no-scroll {
     }
 }
 
+/* ==================== SCROLL REVEAL ANIMATIONS ==================== */
+
+/* --- Base reveal classes --- */
+.reveal {
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform, filter;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none !important;
+    filter: blur(0) !important;
+}
+
+/* --- Fade Up (default) --- */
+.reveal-fade-up {
+    transform: translateY(60px);
+}
+
+/* --- Fade Down --- */
+.reveal-fade-down {
+    transform: translateY(-60px);
+}
+
+/* --- Slide From Left --- */
+.reveal-slide-left {
+    transform: translateX(-80px);
+}
+
+/* --- Slide From Right --- */
+.reveal-slide-right {
+    transform: translateX(80px);
+}
+
+/* --- Scale Up --- */
+.reveal-scale-up {
+    transform: scale(0.8);
+}
+
+/* --- Scale Down (zoom in effect) --- */
+.reveal-scale-down {
+    transform: scale(1.15);
+}
+
+/* --- Rotate In --- */
+.reveal-rotate {
+    transform: rotate(-5deg) translateY(40px);
+}
+
+/* --- Blur Fade --- */
+.reveal-blur {
+    transform: translateY(30px);
+    filter: blur(10px);
+}
+
+/* --- Flip X (horizontal flip) --- */
+.reveal-flip-x {
+    transform: perspective(600px) rotateX(15deg) translateY(40px);
+}
+
+/* --- Stagger delay classes for children --- */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+.reveal-delay-7 { transition-delay: 0.7s; }
+.reveal-delay-8 { transition-delay: 0.8s; }
+
+/* --- Custom timing variations --- */
+.reveal-slow {
+    transition-duration: 1.3s;
+}
+
+.reveal-fast {
+    transition-duration: 0.6s;
+}
+
+/* --- Hero Section Reveal --- */
+.hero .hero-arch {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hero.revealed .hero-arch {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.hero .hero-text {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+.hero.revealed .hero-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero .hero-frame-wrapper {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    transition: opacity 0.9s ease 0.5s, transform 0.9s ease 0.5s;
+}
+.hero.revealed .hero-frame-wrapper {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.hero .hero-bunga-atas-decor {
+    opacity: 0;
+    transform: rotate(-30deg) scale(0.5);
+    transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+}
+.hero.revealed .hero-bunga-atas-decor {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* --- Pengantin Section Reveal --- */
+.pengantin .pengantin-header {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.pengantin.revealed .pengantin-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pengantin .pengantin-card:first-child {
+    opacity: 0;
+    transform: translateX(-60px) rotate(-3deg);
+    transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+}
+.pengantin.revealed .pengantin-card:first-child {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+}
+
+.pengantin .pengantin-ampersand {
+    opacity: 0;
+    transform: scale(0.3);
+    transition: opacity 0.6s ease 0.5s, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+}
+.pengantin.revealed .pengantin-ampersand {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.pengantin .pengantin-card:last-child {
+    opacity: 0;
+    transform: translateX(60px) rotate(3deg);
+    transition: opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s;
+}
+.pengantin.revealed .pengantin-card:last-child {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+}
+
+/* Pengantin photo hover pulse on reveal */
+.pengantin.revealed .pengantin-photo-wrapper {
+    animation: photoPulse 0.6s ease 1s forwards;
+}
+
+@keyframes photoPulse {
+    0% { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); }
+    50% { box-shadow: 0 4px 30px rgba(232, 205, 152, 0.6); }
+    100% { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); }
+}
+
+/* --- Acara Section Reveal --- */
+.acara .acara-header {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.acara.revealed .acara-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.acara .acara-column:first-child {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    transition: opacity 0.9s ease 0.25s, transform 0.9s ease 0.25s;
+}
+.acara.revealed .acara-column:first-child {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.acara .acara-column:last-child {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    transition: opacity 0.9s ease 0.45s, transform 0.9s ease 0.45s;
+}
+.acara.revealed .acara-column:last-child {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Acara card frame shimmer on reveal */
+.acara.revealed .acara-card {
+    animation: cardShimmer 1.2s ease 0.8s forwards;
+}
+
+@keyframes cardShimmer {
+    0% { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
+    50% { box-shadow: 0 8px 40px rgba(242, 217, 160, 0.35); }
+    100% { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
+}
+
+/* --- Gallery Section Reveal --- */
+.gallery .gallery-frame {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.gallery.revealed .gallery-frame {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.gallery .gallery-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+}
+.gallery.revealed .gallery-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gallery items staggered reveal */
+.gallery .gallery-item {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.gallery.revealed .gallery-item {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery.revealed .gallery-item:nth-child(1) { transition-delay: 0.3s; }
+.gallery.revealed .gallery-item:nth-child(2) { transition-delay: 0.4s; }
+.gallery.revealed .gallery-item:nth-child(3) { transition-delay: 0.5s; }
+.gallery.revealed .gallery-item:nth-child(4) { transition-delay: 0.6s; }
+.gallery.revealed .gallery-item:nth-child(5) { transition-delay: 0.7s; }
+.gallery.revealed .gallery-item:nth-child(6) { transition-delay: 0.8s; }
+
+/* Gallery corner decals spin-in */
+.gallery .gallery-decal-top-left,
+.gallery .gallery-decal-top-right,
+.gallery .gallery-decal-bottom-left,
+.gallery .gallery-decal-bottom-right,
+.gallery .gallery-decal-horizontal {
+    opacity: 0;
+    transition: opacity 0.8s ease 0.9s;
+}
+.gallery.revealed .gallery-decal-top-left,
+.gallery.revealed .gallery-decal-top-right,
+.gallery.revealed .gallery-decal-bottom-left,
+.gallery.revealed .gallery-decal-bottom-right,
+.gallery.revealed .gallery-decal-horizontal {
+    opacity: 0.85;
+}
+
+/* --- RSVP Section Reveal --- */
+.rsvp .rsvp-header {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.rsvp.revealed .rsvp-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.rsvp .rsvp-form-card {
+    opacity: 0;
+    transform: perspective(800px) rotateX(8deg) translateY(50px);
+    transition: opacity 1s ease 0.25s, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s;
+}
+.rsvp.revealed .rsvp-form-card {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg) translateY(0);
+}
+
+/* RSVP form fields staggered */
+.rsvp .rsvp-field {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.rsvp.revealed .rsvp-field {
+    opacity: 1;
+    transform: translateX(0);
+}
+.rsvp.revealed .rsvp-field:nth-child(1) { transition-delay: 0.5s; }
+.rsvp.revealed .rsvp-field:nth-child(2) { transition-delay: 0.65s; }
+.rsvp.revealed .rsvp-field:nth-child(3) { transition-delay: 0.8s; }
+.rsvp.revealed .rsvp-field:nth-child(4) { transition-delay: 0.95s; }
+
+.rsvp .rsvp-confirm-btn {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 1.1s, transform 0.6s ease 1.1s;
+}
+.rsvp.revealed .rsvp-confirm-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Gift Section Reveal --- */
+.gift .gift-header {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.gift.revealed .gift-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gift .gift-card {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+}
+.gift.revealed .gift-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.gift .gift-grid-item:first-child {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+.gift.revealed .gift-grid-item:first-child {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.gift .gift-divider {
+    opacity: 0;
+    transform: scaleY(0);
+    transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
+    transform-origin: top;
+}
+.gift.revealed .gift-divider {
+    opacity: 0.6;
+    transform: scaleY(1);
+}
+
+.gift .gift-grid-item:last-child {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+}
+.gift.revealed .gift-grid-item:last-child {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.gift .gift-thankyou {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.7s ease 0.8s, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s;
+}
+.gift.revealed .gift-thankyou {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Wishes Section Reveal --- */
+.wishes .wishes-header {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.wishes.revealed .wishes-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wishes .wishes-form-area {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+.wishes.revealed .wishes-form-area {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wishes .wishes-list {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    transition: opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s;
+}
+.wishes.revealed .wishes-list {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- Penutup Section Reveal --- */
+.penutup .penutup-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
+}
+.penutup.revealed .penutup-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.penutup .penutup-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s;
+}
+.penutup.revealed .penutup-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.penutup .penutup-photo-wrapper {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.8s ease 0.6s, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s;
+}
+.penutup.revealed .penutup-photo-wrapper {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.penutup .penutup-names {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition: opacity 0.7s ease 0.8s, transform 0.7s ease 0.8s;
+}
+.penutup.revealed .penutup-names {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- Footer Section Reveal --- */
+.footer .footer-text-top {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.footer.revealed .footer-text-top {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer .footer-logo-wrapper {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.7s ease 0.2s, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+.footer.revealed .footer-logo-wrapper {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.footer .footer-text-bottom {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+}
+.footer.revealed .footer-text-bottom {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Reduced Motion Preference --- */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .hero .hero-arch,
+    .hero .hero-text,
+    .hero .hero-frame-wrapper,
+    .hero .hero-bunga-atas-decor,
+    .pengantin .pengantin-header,
+    .pengantin .pengantin-card,
+    .pengantin .pengantin-ampersand,
+    .acara .acara-header,
+    .acara .acara-column,
+    .gallery .gallery-frame,
+    .gallery .gallery-title,
+    .gallery .gallery-item,
+    .rsvp .rsvp-header,
+    .rsvp .rsvp-form-card,
+    .rsvp .rsvp-field,
+    .rsvp .rsvp-confirm-btn,
+    .gift .gift-header,
+    .gift .gift-card,
+    .gift .gift-grid-item,
+    .gift .gift-divider,
+    .gift .gift-thankyou,
+    .wishes .wishes-header,
+    .wishes .wishes-form-area,
+    .wishes .wishes-list,
+    .penutup .penutup-left,
+    .penutup .penutup-right,
+    .penutup .penutup-photo-wrapper,
+    .penutup .penutup-names,
+    .footer .footer-text-top,
+    .footer .footer-logo-wrapper,
+    .footer .footer-text-bottom {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
 /* ==================== RESPONSIVE ==================== */
 
 /* Large desktops / monitors */

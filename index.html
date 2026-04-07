@@ -462,34 +462,8 @@
         const iconPause = document.getElementById('iconPause');
         let isMusicPlaying = false;
 
-        function openInvitation() {
-            const cover = document.getElementById('cover');
-            
-            // Start fade-out animation
-            cover.classList.add('cover-opened');
-
-            // Play music
-            bgMusic.play().then(() => {
-                isMusicPlaying = true;
-                iconPlay.style.display = 'none';
-                iconPause.style.display = 'block';
-            }).catch(() => {
-                // Autoplay blocked, show play icon
-                isMusicPlaying = false;
-                iconPlay.style.display = 'block';
-                iconPause.style.display = 'none';
-            });
-
-            // Show music toggle button
-            musicToggle.classList.add('music-toggle-visible');
-
-            // After animation completes, remove cover entirely and enable scrolling
-            setTimeout(() => {
-                cover.style.display = 'none';
-                document.body.classList.remove('no-scroll');
-                window.scrollTo(0, 0);
-            }, 800);
-        }
+        // openInvitation is defined below in the scroll reveal section
+        function openInvitation() {}
 
         function toggleMusic() {
             if (isMusicPlaying) {
@@ -627,6 +601,79 @@
                 btn.disabled = false;
             }, 2000);
         }
+
+        // ==================== SCROLL REVEAL ANIMATIONS ====================
+        
+        // Sections to observe for scroll-triggered animations
+        const revealSections = [
+            'hero', 'pengantin', 'acara', 'gallery', 
+            'rsvp', 'gift', 'wishes', 'penutup', 'footer'
+        ];
+
+        // Create Intersection Observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Once revealed, stop observing (animate only once)
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,      // Trigger when 12% of the section is visible
+            rootMargin: '0px 0px -50px 0px'  // Slight offset from bottom
+        });
+
+        // Start observing all sections after invitation is opened
+        function initScrollReveal() {
+            revealSections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    revealObserver.observe(section);
+                }
+            });
+        }
+
+        // Full openInvitation implementation with scroll reveal init
+        openInvitation = function() {
+            const cover = document.getElementById('cover');
+            
+            // Start fade-out animation
+            cover.classList.add('cover-opened');
+
+            // Play music
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                iconPlay.style.display = 'none';
+                iconPause.style.display = 'block';
+            }).catch(() => {
+                isMusicPlaying = false;
+                iconPlay.style.display = 'block';
+                iconPause.style.display = 'none';
+            });
+
+            // Show music toggle button
+            musicToggle.classList.add('music-toggle-visible');
+
+            // After animation completes, remove cover and enable scrolling + reveal
+            setTimeout(() => {
+                cover.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+                window.scrollTo(0, 0);
+
+                // Initialize scroll reveal system
+                initScrollReveal();
+
+                // Immediately reveal hero since it's the first section visible
+                const hero = document.getElementById('hero');
+                if (hero) {
+                    setTimeout(() => {
+                        hero.classList.add('revealed');
+                        revealObserver.unobserve(hero);
+                    }, 100);
+                }
+            }, 800);
+        };
     </script>
 
 </body>
